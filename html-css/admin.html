@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RecipeHub - Админ</title>
+  <link rel="stylesheet" href="common.css">
+  <link rel="stylesheet" href="admin.css">
+  <script src="../navbar.js" defer></script>
+  <script src="../data_handler.js" defer></script>
+</head>
+<body>
+  <div id="site-header-mount"></div>
+
+  <main class="main-content">
+    <section class="hero">
+      <div class="container hero-layout">
+        <div>
+          <p class="eyebrow">Төслийн удирдлага</p>
+          <h2>Админ хяналтын самбар</h2>
+          <p class="section-intro">Жорын хяналт, хэрэглэгчийн эрх, захиалгын төлөв болон системийн ерөнхий үзүүлэлтийг нэг дороос харах загвар.</p>
+        </div>
+
+        <div class="hero-note">
+          <p class="note-label">Өнөөдрийн товч мэдээлэл</p>
+          <strong id="admin-hero-note-title"></strong>
+          <span id="admin-hero-note-copy"></span>
+        </div>
+      </div>
+    </section>
+
+    <section class="page-section">
+      <div class="container admin-layout">
+        <div class="admin-main">
+          <section class="stats-grid" aria-label="Ерөнхий үзүүлэлтүүд" id="admin-stats-grid"></section>
+
+          <section class="panel admin-panel">
+            <div class="section-head">
+              <div>
+                <p class="card-tag">Хяналт</p>
+                <h3>Шалгах дараалал</h3>
+              </div>
+              <a class="secondary-button" href="detail.html">Бүгдийг харах</a>
+            </div>
+
+            <div class="queue-list" id="admin-queue-list"></div>
+          </section>
+
+          <section class="panel admin-panel">
+            <div class="section-head">
+              <div>
+                <p class="card-tag">Хэрэглэгчийн эрх</p>
+                <h3>Эрхийн хүсэлтүүд</h3>
+              </div>
+            </div>
+
+            <div class="request-table" role="table" aria-label="Эрхийн хүсэлтүүд">
+              <div class="table-row table-head" role="row">
+                <span role="columnheader">Нэр</span>
+                <span role="columnheader">Хүсэлт</span>
+                <span role="columnheader">Төлөв</span>
+              </div>
+              <div id="admin-request-rows"></div>
+            </div>
+          </section>
+        </div>
+
+        <aside class="admin-side">
+          <div class="summary-card side-card">
+            <p class="note-label">Шуурхай үйлдэл</p>
+            <h3>Түргэн холбоос</h3>
+            <div class="action-stack">
+              <a class="primary-button" href="add.html">Шинэ жор шалгах</a>
+              <a class="secondary-button" href="pricing.html">Захиалгын төлөв харах</a>
+              <a class="secondary-button" href="favorites.html">Хадгалсан контент шалгах</a>
+            </div>
+          </div>
+
+          <div class="summary-card side-card">
+            <p class="note-label">Системийн төлөв</p>
+            <h3>Эрсдэлийн тойм</h3>
+            <ul class="summary-list" id="admin-system-notes"></ul>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

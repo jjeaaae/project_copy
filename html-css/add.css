@@ -1,0 +1,32 @@
+.panel {
+  max-width: 820px;
+  margin: 0 auto;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(248, 241, 232, 0.98)),
+    var(--surface);
+}
+
+.panel-heading {
+  margin-bottom: 14px;
+}
+
+.panel-heading h3 {
+  font-size: 1.6rem;
+  margin-top: 8px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+
+input,
+select,
+textarea {
+  margin-bottom: 18px;
+}
+
+.card-button {
+  margin-top: 6px;
+}

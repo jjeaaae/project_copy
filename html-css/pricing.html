@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RecipeHub - Үнэ</title>
+  <link rel="stylesheet" href="common.css">
+  <link rel="stylesheet" href="pricing.css">
+  <script src="../navbar.js" defer></script>
+  <script src="../data_handler.js" defer></script>
+</head>
+<body>
+  <div id="site-header-mount"></div>
+
+  <main class="main-content">
+    <section class="hero">
+      <div class="container hero-layout">
+        <div>
+          <p class="eyebrow">Эрхийн багцууд</p>
+          <h2>Хэрэглэгчийн багц ба тусгай эрх</h2>
+          <p class="section-intro">Энгийн хэрэглэгч үндсэн функцуудыг ашиглана. Захиалгатай хэрэглэгч нэмэлт хэрэгслүүд нээнэ. Харин Creator болон Specialist эрх нь илүү үнэ цэнтэй контент үүсгэх тусгай түвшин байна.</p>
+        </div>
+        <div class="hero-note">
+          <p class="note-label">Санал болгож буй бүтэц</p>
+          <strong id="pricing-hero-note-title"></strong>
+          <span id="pricing-hero-note-copy"></span>
+        </div>
+      </div>
+    </section>
+
+    <section class="page-section">
+      <div class="container pricing-grid" id="pricing-grid"></div>
+    </section>
+
+    <section class="page-section">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Тусгай түвшин</p>
+          <h3>Subscriber дээр нэмэгдэх эрхүүд</h3>
+          <p>Эдгээр нь энгийн захиалгатай эрхээс цааш контентын чанар, мэргэжлийн үнэ цэнийг нэмэх зориулалттай.</p>
+        </div>
+
+        <div class="role-grid" id="pricing-role-grid"></div>
+      </div>
+    </section>
+
+    <section class="page-section">
+      <div class="container">
+        <div class="compare-box">
+          <div class="compare-head">
+            <h3>Эрхийн харьцуулалт</h3>
+            <p>Ямар түвшинд ямар боломж нээгдэхийг товч харуулсан хүснэгт.</p>
+          </div>
+
+          <div class="compare-table" id="pricing-compare-table"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

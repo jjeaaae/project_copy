@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RecipeHub - Хайлт</title>
+  <link rel="stylesheet" href="common.css">
+  <link rel="stylesheet" href="search.css">
+  <script src="../navbar.js" defer></script>
+  <script src="../data_handler.js" defer></script>
+</head>
+<body>
+  <div id="site-header-mount"></div>
+
+  <main class="main-content">
+    <section class="hero">
+      <div class="container hero-top">
+        <div class="hero-copy">
+          <p class="eyebrow">Тохирох жор хайх</p>
+          <h2>Жор хайх</h2>
+          <p class="section-intro">Хөргөгчиндөө байгаа орцоо оруулж, шүүлтээр илчлэг, төвөгшил, улсын төрөл зэргээр эмхтэй хайх боломжтой бүтэц.</p>
+          <div class="hero-notes" id="search-hero-notes"></div>
+        </div>
+        <div class="hero-actions">
+          <a class="hero-link-button" href="personalized.html">Зөвхөн таньд зориулсан орц</a>
+          <div class="hero-mini-card">
+            <strong id="search-mini-title"></strong>
+            <p id="search-mini-copy"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page-section">
+      <div class="container">
+        <section class="search-builder panel">
+          <div class="builder-group">
+            <h3>Байгаа орц</h3>
+            <div class="token-row" id="available-ingredients"></div>
+          </div>
+
+          <div class="builder-group builder-divider">
+            <h3>Оруулахгүй орц</h3>
+            <div class="token-row" id="excluded-ingredients"></div>
+          </div>
+
+          <div class="quick-row">
+            <div class="quick-add">
+              <span class="quick-label">Түргэн нэмэх:</span>
+              <span id="quick-add-chips"></span>
+            </div>
+            <button type="button" class="search-button">Жор хайх</button>
+          </div>
+        </section>
+
+        <div class="search-layout">
+          <aside class="filters-panel panel" aria-label="Шүүлтүүд">
+            <section class="filter-section">
+              <h3>Ангилал</h3>
+              <div class="filter-list" id="search-categories"></div>
+            </section>
+
+            <section class="filter-section">
+              <h3>Төвөгшил</h3>
+              <div id="search-difficulty"></div>
+            </section>
+
+            <section class="filter-section">
+              <h3>Хамгийн их хугацаа</h3>
+              <input id="search-time-range" type="range" min="10" max="90" value="60" class="range-control">
+              <div class="range-meta">
+                <span>10 мин</span>
+                <strong id="search-time-value">60 мин</strong>
+              </div>
+            </section>
+
+            <section class="filter-section">
+              <h3>Илчлэгийн дээд хэмжээ</h3>
+              <input type="number" class="field-control" placeholder="Жишээ: 450">
+            </section>
+
+            <section class="filter-section">
+              <h3>Хоолны улсын төрөл</h3>
+              <select class="field-control" id="search-cuisine"></select>
+            </section>
+
+            <section class="filter-section">
+              <h3>Хооллолтын төрөл</h3>
+              <div id="search-dietary"></div>
+            </section>
+
+            <button type="button" class="reset-button">Шүүлт цэвэрлэх</button>
+          </aside>
+
+          <section class="results-area" aria-label="Хайлтын үр дүн">
+            <div class="results-toolbar">
+              <div>
+                <h3 id="search-results-title"></h3>
+                <p id="search-results-count"></p>
+                <div class="result-summary" id="search-results-summary"></div>
+              </div>
+              <label class="sort-box">
+                <span>Эрэмбэлэх:</span>
+                <select id="search-sort"></select>
+              </label>
+            </div>
+
+            <div class="result-stack" id="search-results"></div>
+          </section>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

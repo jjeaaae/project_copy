@@ -6,7 +6,8 @@
   <title>RecipeHub - Хувийн тохиргоотой орц</title>
   <link rel="stylesheet" href="common.css">
   <link rel="stylesheet" href="personalized.css">
-  <script src="navbar.js" defer></script>
+  <script src="../navbar.js" defer></script>
+  <script src="../data_handler.js" defer></script>
 </head>
 <body>
   <div id="site-header-mount"></div>
@@ -35,12 +36,7 @@
               </label>
               <label>
                 <span>Хүйс</span>
-                <select>
-                  <option>Сонгох</option>
-                  <option>Эрэгтэй</option>
-                  <option>Эмэгтэй</option>
-                  <option>Бусад</option>
-                </select>
+                <select id="profile-gender"></select>
               </label>
               <label>
                 <span>Өндөр (см)</span>
@@ -55,12 +51,7 @@
 
           <div class="form-section">
             <h3>Хооллолтын зорилго</h3>
-            <div class="choice-grid">
-              <label class="choice-card"><input type="radio" name="goal"> Жингээ барих</label>
-              <label class="choice-card"><input type="radio" name="goal"> Жин хасах</label>
-              <label class="choice-card"><input type="radio" name="goal"> Булчин нэмэх</label>
-              <label class="choice-card"><input type="radio" name="goal"> Илүү эрүүл хооллох</label>
-            </div>
+            <div class="choice-grid" id="profile-goals"></div>
           </div>
 
           <div class="form-section">
@@ -80,13 +71,7 @@
               </label>
               <label>
                 <span>Хоолны дэглэм</span>
-                <select>
-                  <option>Ердийн</option>
-                  <option>Цагаан хоолтон</option>
-                  <option>Веган</option>
-                  <option>Глютенгүй</option>
-                  <option>Сүүн бүтээгдэхүүнгүй</option>
-                </select>
+                <select id="profile-diet"></select>
               </label>
             </div>
           </div>
@@ -96,30 +81,15 @@
             <div class="field-grid">
               <label>
                 <span>Идэвх хөдөлгөөний түвшин</span>
-                <select>
-                  <option>Сууж ажилладаг</option>
-                  <option>Дундаж</option>
-                  <option>Идэвхтэй</option>
-                  <option>Спортлог</option>
-                </select>
+                <select id="profile-activity"></select>
               </label>
               <label>
                 <span>Өдөрт хэдэн удаа хооллох</span>
-                <select>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
-                </select>
+                <select id="profile-meals"></select>
               </label>
               <label>
                 <span>Дуртай улсын хоол</span>
-                <select>
-                  <option>Монгол</option>
-                  <option>Итали</option>
-                  <option>Энэтхэг</option>
-                  <option>Япон</option>
-                  <option>Франц</option>
-                </select>
+                <select id="profile-cuisine"></select>
               </label>
               <label>
                 <span>Хоол хийхэд зарцуулах дээд хугацаа</span>
@@ -146,12 +116,7 @@
           <div class="summary-card">
             <p class="summary-label">Энэ хуудас юу хийх вэ?</p>
             <h3>Танд зориулсан шүүлт үүсгэнэ</h3>
-            <ul class="summary-list">
-              <li>Илчлэгийн хүрээ тооцно</li>
-              <li>Харшилтай орцыг автоматаар хасна</li>
-              <li>Таны зорилгод таарах хоол санал болгоно</li>
-              <li>Дуртай улсын хоолоор санал шүүнэ</li>
-            </ul>
+            <ul class="summary-list" id="profile-summary-list"></ul>
           </div>
         </aside>
       </div>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RecipeHub - Жорын дэлгэрэнгүй</title>
+  <link rel="stylesheet" href="common.css">
+  <link rel="stylesheet" href="detail.css">
+  <script src="../navbar.js" defer></script>
+  <script src="../data_handler.js" defer></script>
+</head>
+<body>
+  <div id="site-header-mount"></div>
+
+  <main class="main-content">
+    <section class="hero">
+      <div class="container">
+        <p class="eyebrow">Жорын танилцуулга</p>
+        <h2 id="recipe-title">Жорын нэр</h2>
+        <p class="section-intro" id="recipe-meta">Жорын тайлбар</p>
+      </div>
+    </section>
+
+    <section class="page-section">
+      <div class="container detail-layout">
+        <article class="panel summary-panel">
+          <img class="panel-image" id="recipe-image" src="" alt="Жорын зураг">
+          <h3>Жорын товч мэдээлэл</h3>
+          <p><strong>Хугацаа:</strong> <span id="recipe-time"></span></p>
+          <p><strong>Порц:</strong> <span id="recipe-servings"></span></p>
+          <p><strong>Төвөгшил:</strong> <span id="recipe-difficulty"></span></p>
+          <p><strong>Калори:</strong> <span id="recipe-calories"></span></p>
+          <a class="card-button" href="favorites.html">Буцах</a>
+        </article>
+
+        <div class="info-grid">
+          <article class="panel">
+            <h3>Орц</h3>
+            <ul id="recipe-ingredients"></ul>
+          </article>
+
+          <article class="panel">
+            <h3>Тэжээлийн мэдээлэл</h3>
+            <p>Калори: <span id="nutrition-calories"></span></p>
+            <p>Уураг: <span id="nutrition-protein"></span></p>
+            <p>Нүүрс ус: <span id="nutrition-carbs"></span></p>
+            <p>Өөх тос: <span id="nutrition-fat"></span></p>
+            <p>Тохирох төрөл: <span id="nutrition-type"></span></p>
+          </article>
+        </div>
+
+        <div class="info-grid">
+          <article class="panel">
+            <h3>Хэв маягт тохирох байдал</h3>
+            <ul id="recipe-lifestyle"></ul>
+          </article>
+
+          <article class="panel">
+            <h3>Насны ангилал</h3>
+            <ul id="recipe-age-group"></ul>
+          </article>
+        </div>
+
+        <article class="panel">
+          <h3>Хийх алхам</h3>
+          <ol id="recipe-steps"></ol>
+        </article>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

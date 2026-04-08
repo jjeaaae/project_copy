@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RecipeHub - Жор нэмэх</title>
+  <link rel="stylesheet" href="common.css">
+  <link rel="stylesheet" href="add.css">
+  <script src="../navbar.js" defer></script>
+  <script src="../data_handler.js" defer></script>
+</head>
+<body>
+  <div id="site-header-mount"></div>
+
+  <main class="main-content">
+    <section class="hero">
+      <div class="container">
+        <p class="eyebrow">Шинэ контент илгээх</p>
+        <h2>Жор нэмэх</h2>
+        <p class="section-intro">Энэ формд гарчиг, зураг, ангилал, орц, алхам, хугацаа, порц зэрэг шаардлагатай талбарууд орсон.</p>
+      </div>
+    </section>
+
+    <section class="page-section">
+      <div class="container">
+        <form class="panel form-panel">
+          <div class="panel-heading">
+            <p class="card-tag">Жорын форм</p>
+            <h3>Шинэ жор оруулах</h3>
+          </div>
+          <label for="recipe-name">Жорын нэр</label>
+          <input id="recipe-name" type="text" placeholder="Жорын нэр">
+
+          <label for="category">Ангилал</label>
+          <select id="category"></select>
+
+          <label for="image-link">Зургийн холбоос</label>
+          <input id="image-link" type="text" placeholder="Сонголттой">
+
+          <label for="cook-time">Хоол хийх хугацаа</label>
+          <input id="cook-time" type="text" placeholder="35 минут">
+
+          <label for="servings">Порц</label>
+          <input id="servings" type="text" placeholder="4">
+
+          <label for="ingredients">Орц</label>
+          <textarea id="ingredients" placeholder="Орцоо энд бичнэ үү"></textarea>
+
+          <label for="steps">Алхам</label>
+          <textarea id="steps" placeholder="Хийх алхмаа энд бичнэ үү"></textarea>
+
+          <button class="card-button" type="submit">Жор нийтлэх</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+</body>
+</html>
