@@ -60,6 +60,13 @@ img {
   gap: 24px;
 }
 
+.brand-link {
+  display: inline-flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  color: #ffffff;
+}
+
 .eyebrow {
   font-size: 0.78rem;
   font-weight: 700;
@@ -95,13 +102,6 @@ img {
 .site-nav a:hover {
   background: rgba(255, 255, 255, 0.16);
   transform: translateY(-1px);
-}
-
-.site-nav a.auth-link {
-  background: #ffffff;
-  color: var(--secondary);
-  margin-left: 8px;
-  flex-shrink: 0;
 }
 
 .main-content {
@@ -236,6 +236,10 @@ textarea {
   .header-inner {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .site-nav {
+    justify-content: flex-start;
   }
 
   .logo {
