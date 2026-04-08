@@ -1,101 +1,116 @@
+
 <!DOCTYPE html>
 <html lang="mn">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RecipeHub - Жорууд</title>
-  <link rel="stylesheet" href="common.css">
-  <link rel="stylesheet" href="index.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RecipeHub — Жорууд</title>
+
+  <link rel="stylesheet" href="common.css" />
+  <link rel="stylesheet" href="index.css" />
 </head>
-
 <body>
-  <header class="site-header">
-    <div class="container header-inner">
-      <div>
-        <p class="eyebrow">Жорын апп</p>
-        <h1 class="logo">RecipeHub</h1>
+
+ <nav class="nav">
+  <div class="nav-brand"><small>Жорын Апп</small>RecipeHub</div>
+
+  <a href="search.html" class="nav-link">Хайх</a>
+  <a href="detail.html" class="nav-link">Жорын дэлгэрэнгүй</a>
+  <a href="favorites.html" class="nav-link">Хадгалсан</a>
+  <a href="pricing.html" class="nav-link">Subscription</a>
+  <a href="add.html" class="nav-link">Жор нэмэх</a>
+  <a href="admin.html" class="nav-link">Админ</a>
+</nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-label">Зөвхөн таны хувьд</div>
+    <h1>Таны өнөөдрийн <em>байдалд</em> тохирсон жор</h1>
+    <p class="hero-sub">Сэтгэл хөдлөл, хүсэл, цаг агаарыг хэлээрэй — хамгийн тохирсон жорыг санал болгоно.</p>
+  </section>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- STEP 1 -->
+    <div class="section-label">Алхам 1</div>
+    <div class="step-card">
+      <div class="step-num">01</div>
+      <div class="step-title">Өнөөдөр та ямаршуу байна?</div>
+      <div class="step-desc">Нэг буюу хэд хэдэн сонголт хийж болно</div>
+      <div class="opt-badge">Заавал биш</div>
+      <div class="pills" id="moods">
+        <div class="pill" onclick="tog(this)"><span>😔</span> Гунигтай</div>
+        <div class="pill" onclick="tog(this)"><span>😠</span> Ууртай</div>
+        <div class="pill" onclick="tog(this)"><span>😊</span> Аз жаргалтай</div>
+        <div class="pill" onclick="tog(this)"><span>⚡</span> Яарч байна</div>
+        <div class="pill" onclick="tog(this)"><span>😴</span> Залхуурсан</div>
+        <div class="pill" onclick="tog(this)"><span>🔥</span> Халууцаж байна</div>
+        <div class="pill" onclick="tog(this)"><span>❄️</span> Даарч байна</div>
+        <div class="pill" onclick="tog(this)"><span>💪</span> Эрч хүчтэй</div>
+        <div class="pill" onclick="tog(this)"><span>🤒</span> Өвчтэй</div>
+        <div class="pill" onclick="tog(this)"><span>😌</span> Тайван</div>
+        <div class="pill" onclick="tog(this)"><span>😰</span> Стресстэй</div>
+        <div class="pill" onclick="tog(this)"><span>🥱</span> Уйдаж байна</div>
+        <div class="pill" onclick="tog(this)"><span>🧘</span> Амарч байна</div>
       </div>
-      <nav class="site-nav" aria-label="Үндсэн цэс">
-        <a class="active" href="index.html">Нүүр хуудас</a>
-        <a href="search.html">Хайх</a>
-        <!-- <a href="detail.html">Жорын дэлгэрэнгүй</a> -->
-        <a href="favorites.html">Хадгалсан</a>
-        <a href="pricing.html">Subscription</a>
-        <a href="add.html">Жор нэмэх</a>
-        <a href="admin.html">Админ</a>
-        <a class="auth-link" href="login.html">Нэвтрэх</a>
-      </nav>
     </div>
-  </header>
 
-  <main class="main-content">
-    <section class="hero">
-      <div class="container">
-        <p class="eyebrow">Шинэ санаа олоорой</p>
-        <h2>Санал болгох жор</h2>
+    <!-- STEP 2 -->
+    <div class="section-label">Алхам 2</div>
+    <div class="step-card">
+      <div class="step-num">02</div>
+      <div class="step-title">Өнөөдөр юу идмээр байна?</div>
+      <div class="step-desc">Амт, хоолны төрлөөр шүүнэ</div>
+      <div class="opt-badge">Заавал биш</div>
+      <div class="craving-grid" id="cravings">
+        <div class="craving-card" onclick="tog(this)"><span class="c-icon">🌶️</span><span class="c-label">Халуун ногоотой</span></div>
+        <div class="craving-card" onclick="tog(this)"><span class="c-icon">🍜</span><span class="c-label">Халуун шөл</span></div>
+        <div class="craving-card" onclick="tog(this)"><span class="c-icon">🍰</span><span class="c-label">Чихэрлэг</span></div>
+        <div class="craving-card" onclick="tog(this)"><span class="c-icon">🥗</span><span class="c-label">Хөнгөн хоол</span></div>
+        <div class="craving-card" onclick="tog(this)"><span class="c-icon">🍖</span><span class="c-label">Их махтай</span></div>
+        <div class="craving-card" onclick="tog(this)"><span class="c-icon">🌿</span><span class="c-label">Их ногоотой</span></div>
+        <div class="craving-card" onclick="tog(this)"><span class="c-icon">🍱</span><span class="c-label">Монгол хоол</span></div>
+        <div class="craving-card" onclick="tog(this)"><span class="c-icon">🥐</span><span class="c-label">Өглөөний</span></div>
+        <div class="craving-card" onclick="tog(this)"><span class="c-icon">🧃</span><span class="c-label">Ундаа</span></div>
+        <div class="craving-card" onclick="tog(this)"><span class="c-icon">🍣</span><span class="c-label">Загас</span></div>
+        <div class="craving-card" onclick="tog(this)"><span class="c-icon">🫕</span><span class="c-label">Шөлтэй</span></div>
+        <div class="craving-card" onclick="tog(this)"><span class="c-icon">⚡</span><span class="c-label">Хурдан хоол</span></div>
+        <div class="craving-card" onclick="tog(this)"><span class="c-icon">🍛</span><span class="c-label">Энэтхэг</span></div>
+        <div class="craving-card" onclick="tog(this)"><span class="c-icon">🫙</span><span class="c-label">Гэрийн хоол</span></div>
+        <div class="craving-card" onclick="tog(this)"><span class="c-icon">🥩</span><span class="c-label">Шарсан мах</span></div>
+        <div class="craving-card" onclick="tog(this)"><span class="c-icon">🍝</span><span class="c-label">Pasta</span></div>
       </div>
-    </section>
+    </div>
 
-    <section class="page-section">
-      <div class="container">
-        <div class="filter-bar">
-          <button class="filter-pill" data-filter="category" data-value="Өглөөний хоол">Өглөөний хоол</button>
-          <button class="filter-pill" data-filter="category" data-value="Оройн хоол">Оройн хоол</button>
-          <button class="filter-pill" data-filter="tag" data-value="Эрүүл">Эрүүл</button>
-          <button class="filter-pill" data-filter="tag" data-value="Түргэн хоол">Түргэн хоол</button>
-          <button class="filter-pill" data-filter="cuisine" data-value="Монгол">Монгол</button>
-          <button class="filter-pill" data-filter="cuisine" data-value="Энэтхэг">Энэтхэг</button>
-
-        </div>
-
-        <div class="recipe-grid">
-          <article class="recipe-card">
-            <img class="card-image"
-              src="https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?auto=format&fit=crop&w=900&q=80"
-              alt="Цөцгийтэй паста">
-            <div class="card-body">
-              <p class="card-tag">Оройн хоол</p>
-              <h3>Цөцгийтэй паста</h3>
-              <p class="card-meta">35 минут</p>
-              <p class="card-meta">Төрөл: Итали</p>
-              <p class="card-meta">Үнэлгээ: 4.9</p>
-              <a class="card-button" href="detail.html">Жор үзэх</a>
-            </div>
-          </article>
-
-          <article class="recipe-card">
-            <img class="card-image"
-              src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=900&q=80"
-              alt="Шинэхэн грек салат">
-            <div class="card-body">
-              <p class="card-tag">Эрүүл</p>
-              <h3>Грек салат</h3>
-              <p class="card-meta">20 минут</p>
-              <p class="card-meta">Төрөл: Газар дундын тэнгис</p>
-              <p class="card-meta">Үнэлгээ: 4.8</p>
-              <a class="card-button" href="detail.html">Жор үзэх</a>
-            </div>
-          </article>
-
-          <article class="recipe-card">
-            <img class="card-image"
-              src="https://images.unsplash.com/photo-1528207776546-365bb710ee93?auto=format&fit=crop&w=900&q=80"
-              alt="Зузаан бин">
-            <div class="card-body">
-              <p class="card-tag">Өглөөний хоол</p>
-              <h3>Панкейк</h3>
-              <p class="card-meta">25 минут</p>
-              <p class="card-meta">Төрөл: Америк</p>
-              <p class="card-meta">Үнэлгээ: 4.6</p>
-              <a class="card-button" href="detail.html">Жор үзэх</a>
-            </div>
-          </article>
-        </div>
+    <!-- STEP 3 -->
+    <div class="section-label">Алхам 3</div>
+    <div class="step-card">
+      <div class="step-num">03</div>
+      <div class="step-title">Өнөөдрийг 3 үгээр илэрхийл</div>
+      <div class="step-desc">1–3 үг бичнэ үү — заавал 3 биш</div>
+      <div class="opt-badge">Заавал биш</div>
+      <div class="word-row">
+        <div class="word-box"><span class="w-num">Үг 1</span><input id="w1" placeholder="Жишээ: залхуу…" /></div>
+        <div class="word-box"><span class="w-num">Үг 2</span><input id="w2" placeholder="Жишээ: хүйтэн…" /></div>
+        <div class="word-box"><span class="w-num">Үг 3</span><input id="w3" placeholder="Жишээ: гэртээ…" /></div>
       </div>
-    </section>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-area">
+      <button class="cta-btn" onclick="recommend()">
+        Жор санал болгох <span class="cta-arrow">→</span>
+      </button>
+      <span class="cta-hint">Зөвхөн сонгосон хэсгүүдэд үндэслэнэ</span>
+    </div>
+
+    <!-- RESULTS -->
+    <div class="result-section" id="results" style="display:none">
+      <div class="result-label">Санал болгох жорууд</div>
+      <div class="result-grid" id="rgrid"></div>
+    </div>
+
   </main>
-
 </body>
-
 </html>
