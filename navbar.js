@@ -5,6 +5,7 @@ const navItems = [
   { href: "pricing.html", label: "Subscription" },
   { href: "add.html", label: "Жор нэмэх" },
   { href: "admin.html", label: "Админ" },
+  { href: "login.html", label: "Нэвтрэх"}
 ];
 
 const activePageMap = {
