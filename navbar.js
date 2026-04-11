@@ -1,6 +1,5 @@
 const navItems = [
   { href: "search.html", label: "Хайх" },
-  { href: "detail.html", label: "Жорын дэлгэрэнгүй" },
   { href: "favorites.html", label: "Хадгалсан" },
   { href: "pricing.html", label: "Subscription" },
   { href: "add.html", label: "Жор нэмэх" },
