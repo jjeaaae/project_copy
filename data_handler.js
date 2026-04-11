@@ -1,24 +1,22 @@
-const DATA_URL = "../data.json";
+// RecipeHub — Data handler
+// ES6 modules ашиглан data.js-аас static JSON data-г import хийнэ.
 
-document.addEventListener("DOMContentLoaded", async () => {
-  try {
-    const response = await fetch(DATA_URL);
-    const data = await response.json();
+import { recipes, getRecipeById, getFavoriteRecipes } from "./data.js";
 
-    showFavorites(data.recipes);
-    showDetail(data.recipes);
-  } catch (error) {
-    console.error("Алдаа:", error);
-  }
+document.addEventListener("DOMContentLoaded", () => {
+  showFavorites();
+  showDetail();
 });
 
-function showFavorites(recipes) {
+function showFavorites() {
   const recipeGrid = document.getElementById("recipe-grid");
   if (!recipeGrid) return;
 
-  const favoriteRecipes = recipes.filter(recipe => recipe.isFavorite);
+  const favoriteRecipes = getFavoriteRecipes();
 
-  recipeGrid.innerHTML = favoriteRecipes.map(recipe => `
+  recipeGrid.innerHTML = favoriteRecipes
+    .map(
+      (recipe) => `
     <article class="panel recipe-card">
       <img class="card-image" src="${recipe.image}" alt="${recipe.alt}">
       <div class="card-body">
@@ -28,17 +26,19 @@ function showFavorites(recipes) {
         <a class="card-button" href="detail.html?id=${recipe.id}">Жор үзэх</a>
       </div>
     </article>
-  `).join("");
+  `
+    )
+    .join("");
 }
 
-function showDetail(recipes) {
+function showDetail() {
   const recipeTitle = document.getElementById("recipe-title");
   if (!recipeTitle) return;
 
   const params = new URLSearchParams(window.location.search);
   const recipeId = params.get("id");
 
-  const recipe = recipes.find(item => item.id === recipeId);
+  const recipe = getRecipeById(recipeId);
 
   if (!recipe) {
     recipeTitle.textContent = "Жор олдсонгүй";
@@ -54,21 +54,31 @@ function showDetail(recipes) {
   document.getElementById("recipe-difficulty").textContent = recipe.difficulty;
   document.getElementById("recipe-calories").textContent = recipe.calories;
 
-  document.getElementById("nutrition-calories").textContent = recipe.nutrition.calories;
-  document.getElementById("nutrition-protein").textContent = recipe.nutrition.protein;
-  document.getElementById("nutrition-carbs").textContent = recipe.nutrition.carbs;
+  document.getElementById("nutrition-calories").textContent =
+    recipe.nutrition.calories;
+  document.getElementById("nutrition-protein").textContent =
+    recipe.nutrition.protein;
+  document.getElementById("nutrition-carbs").textContent =
+    recipe.nutrition.carbs;
   document.getElementById("nutrition-fat").textContent = recipe.nutrition.fat;
   document.getElementById("nutrition-type").textContent = recipe.nutrition.type;
 
-  document.getElementById("recipe-ingredients").innerHTML =
-    recipe.ingredients.map(item => `<li>${item}</li>`).join("");
+  document.getElementById("recipe-ingredients").innerHTML = recipe.ingredients
+    .map((item) => `<li>${item}</li>`)
+    .join("");
 
-  document.getElementById("recipe-lifestyle").innerHTML =
-    recipe.lifestyle.map(item => `<li>${item}</li>`).join("");
+  document.getElementById("recipe-lifestyle").innerHTML = recipe.lifestyle
+    .map((item) => `<li>${item}</li>`)
+    .join("");
 
-  document.getElementById("recipe-age-group").innerHTML =
-    recipe.ageGroup.map(item => `<li>${item}</li>`).join("");
+  document.getElementById("recipe-age-group").innerHTML = recipe.ageGroup
+    .map((item) => `<li>${item}</li>`)
+    .join("");
 
-  document.getElementById("recipe-steps").innerHTML =
-    recipe.steps.map(item => `<li>${item}</li>`).join("");
+  document.getElementById("recipe-steps").innerHTML = recipe.steps
+    .map((item) => `<li>${item}</li>`)
+    .join("");
 }
+
+// Бусад файлд хэрэглэх боломжтой болгож export хийе
+export { showFavorites, showDetail };

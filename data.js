@@ -1,0 +1,141 @@
+// RecipeHub — Static JSON data (ES6 module)
+// Lab 4: статик JSON дата хувьсагчид бэлдэж, ES6 import-оор load хийнэ.
+
+export const recipes = [
+  {
+    id: "creamy-pasta",
+    title: "Цөцгийтэй паста",
+    alt: "Цөцгийтэй паста",
+    tag: "Хадгалсан",
+    meta: "Оройн хоолны дуртай сонголт",
+    description: "Цөцгийтэй соус, мөөг, бяслагтай өтгөн амттай паста.",
+    image: "../assets/pancake.png",
+    cookTime: "35 минут",
+    servings: "4",
+    difficulty: "Дунд",
+    calories: "520 ккал",
+    nutrition: {
+      calories: "520 ккал",
+      protein: "18г",
+      carbs: "62г",
+      fat: "24г",
+      type: "Тэнцвэртэй оройн хоол",
+    },
+    ingredients: ["Паста", "Мөөг", "Цөцгий", "Бяслаг"],
+    lifestyle: [
+      "Түргэн оройн хоол төлөвлөхөд тохиромжтой",
+      "Нэмэлт уургаар масс нэмэх зорилгод тааруулж болно",
+      "Дунд зэрэг калоритой гэр бүлийн хоол",
+    ],
+    ageGroup: [
+      "12-18: Тохиромжтой",
+      "5-12: Амтлагчийг багасгаж болно",
+      "1-5: Зөөлөн болгож бага порцоор өгөх",
+    ],
+    steps: [
+      "Пастагаа чанана.",
+      "Мөөгөө хуурна.",
+      "Цөцгий, бяслагаа нэмнэ.",
+      "Бүгдийг хольж сайтар болгоно.",
+    ],
+    isFavorite: true,
+  },
+  {
+    id: "greek-salad",
+    title: "Грек салат",
+    alt: "Грек салат",
+    tag: "Хадгалсан",
+    meta: "Шинэхэн эрүүл сонголт",
+    description: "Шинэхэн ногоо, фета бяслагтай хөнгөн салат.",
+    image: "../assets/pancake.png",
+    cookTime: "15 минут",
+    servings: "2",
+    difficulty: "Хялбар",
+    calories: "240 ккал",
+    nutrition: {
+      calories: "240 ккал",
+      protein: "8г",
+      carbs: "14г",
+      fat: "16г",
+      type: "Хөнгөн өдрийн хоол",
+    },
+    ingredients: ["Өргөст хэмх", "Улаан лооль", "Фета бяслаг", "Олив"],
+    lifestyle: [
+      "Эрүүл хооллолт баримталдаг хүмүүст тохиромжтой",
+      "Илчлэг багатай хоол хайж байвал сайн сонголт",
+      "Зун, хаврын улиралд шинэхэн байдлаар идэхэд тохиромжтой",
+    ],
+    ageGroup: [
+      "12-18: Маш тохиромжтой",
+      "5-12: Бяслагийн хэмжээг багасгаж болно",
+      "1-5: Жижиглэж өгөх шаардлагатай",
+    ],
+    steps: [
+      "Ногоонуудаа угааж жижиглэнэ.",
+      "Фета бяслаг, оливаа нэмнэ.",
+      "Оливын тос, давсаар амтална.",
+      "Хүйтнээр нь шууд сервистэй болгоно.",
+    ],
+    isFavorite: true,
+  },
+  {
+    id: "pancake",
+    title: "Панкейк",
+    alt: "Панкейк",
+    tag: "Хадгалсан",
+    meta: "Өглөөний хурдан сонголт",
+    description: "Зөөлөн бүтэцтэй, өглөөний цайнд тохиромжтой амтлаг панкейк.",
+    image: "../assets/pancake.png",
+    cookTime: "25 минут",
+    servings: "4",
+    difficulty: "Хялбар",
+    calories: "380 ккал",
+    nutrition: {
+      calories: "380 ккал",
+      protein: "10г",
+      carbs: "48г",
+      fat: "14г",
+      type: "Өглөөний эрч хүчний хоол",
+    },
+    ingredients: ["Өндөг", "Сүү", "Гурил", "Цөцгийн тос"],
+    lifestyle: [
+      "Өглөө богино хугацаанд хоол хийхэд тохиромжтой",
+      "Гэр бүлийн өглөөний цайд амархан бэлтгэнэ",
+      "Жимс, сироптой хослуулж амт оруулж болно",
+    ],
+    ageGroup: [
+      "12-18: Маш тохиромжтой",
+      "5-12: Хүүхдэд дуртай амт",
+      "1-5: Жижиг порцоор өгч болно",
+    ],
+    steps: [
+      "Өндөг, сүүгээ холино.",
+      "Гурил, тосоо нэмж зуурмаг бэлтгэнэ.",
+      "Халсан хайруулын тавганд хоёр талаар нь шарна.",
+      "Жимс эсвэл сироптойгоор сервистэй болгоно.",
+    ],
+    isFavorite: true,
+  },
+];
+
+// ----- Helper exports (ES6 named exports) -----
+
+export const getRecipeById = (id) =>
+  recipes.find((recipe) => recipe.id === id);
+
+export const getFavoriteRecipes = () =>
+  recipes.filter((recipe) => recipe.isFavorite);
+
+export const searchRecipes = (query) => {
+  const q = (query || "").toLowerCase().trim();
+  if (!q) return recipes;
+  return recipes.filter(
+    (recipe) =>
+      recipe.title.toLowerCase().includes(q) ||
+      recipe.description.toLowerCase().includes(q) ||
+      recipe.ingredients.some((i) => i.toLowerCase().includes(q))
+  );
+};
+
+// Default export = бүх data
+export default { recipes, getRecipeById, getFavoriteRecipes, searchRecipes };
