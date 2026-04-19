@@ -80,5 +80,5 @@ function showDetail() {
     .join("");
 }
 
-// Бусад файлд хэрэглэх боломжтой болгож export хийе
+// Бусад файлд хэрэглэх боломжтой болгох export
 export { showFavorites, showDetail };
