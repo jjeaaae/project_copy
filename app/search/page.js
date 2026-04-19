@@ -60,7 +60,7 @@ export default function SearchPage() {
 
                                 <section className="filter-section">
                                     <h3>Хамгийн их хугацаа</h3>
-                                    <input id="search-time-range" type="range" min="10" max="90" value="60" className="range-control"/>
+                                    <input id="search-time-range" type="range" min="10" max="90" defaultValue="60" className="range-control"/>
                                         <div className="range-meta">
                                             <span>10 мин</span>
                                             <strong id="search-time-value">60 мин</strong>
