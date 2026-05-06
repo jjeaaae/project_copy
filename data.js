@@ -37,6 +37,7 @@ export const recipes = [
     ],
     isFavorite: true,
   },
+
   {
     id: "greek-salad",
     title: "Грек салат",
@@ -72,6 +73,7 @@ export const recipes = [
     ],
     isFavorite: true,
   },
+
   {
     id: "pancake",
     title: "Панкейк",
@@ -107,6 +109,8 @@ export const recipes = [
     ],
     isFavorite: true,
   },
+
+  // ШИНЭ 1
   {
     id: "fried-rice",
     title: "Шарсан будаа",
@@ -115,10 +119,9 @@ export const recipes = [
     meta: "Хурдан өдрийн хоол",
     description: "Ногоо, өндөг, махтай амттай шарсан будаа.",
     image: "/pancake.png",
-    cuisine: "Хятад",
     cookTime: "20 минут",
     servings: "3",
-    difficulty: 2,
+    difficulty: "Хялбар",
     calories: "450 ккал",
     nutrition: {
       calories: "450 ккал",
@@ -135,8 +138,10 @@ export const recipes = [
       "Ногоо, махаа хуурна.",
       "Будаатай хольж шарна.",
     ],
-    isFavorite: true,
+    isFavorite: false,
   },
+
+  // ШИНЭ 2
   {
     id: "beef-soup",
     title: "Үхрийн махан шөл",
@@ -145,10 +150,9 @@ export const recipes = [
     meta: "Дулаан хоол",
     description: "Үхрийн мах, ногоотой шимтэй шөл.",
     image: "/pancake.png",
-    cuisine: "Монгол",
     cookTime: "60 минут",
     servings: "4",
-    difficulty: 5,
+    difficulty: "Дунд",
     calories: "300 ккал",
     nutrition: {
       calories: "300 ккал",
@@ -159,10 +163,12 @@ export const recipes = [
     },
     ingredients: ["Мах", "Лууван", "Төмс"],
     lifestyle: ["Дархлаа дэмжинэ", "Өвлийн улиралд тохиромжтой"],
-    ageGroup: ["Бүх насанд тохиромжтой"],
+    ageGroup: ["Бүх насанд"],
     steps: ["Махаа чанана.", "Ногоо нэмнэ.", "Амтална."],
     isFavorite: false,
   },
+
+  // ШИНЭ 3
   {
     id: "chicken-salad",
     title: "Тахианы салат",
@@ -171,10 +177,9 @@ export const recipes = [
     meta: "Хөнгөн оройн хоол",
     description: "Тахианы мах, ногоотой уураг ихтэй салат.",
     image: "/pancake.png",
-    cuisine: "Олон улсын",
     cookTime: "25 минут",
     servings: "2",
-    difficulty: 2,
+    difficulty: "Хялбар",
     calories: "280 ккал",
     nutrition: {
       calories: "280 ккал",
@@ -185,28 +190,44 @@ export const recipes = [
     },
     ingredients: ["Тахиа", "Салат навч", "Өргөст хэмх"],
     lifestyle: ["Жин хасахад тохиромжтой", "Protein өндөр"],
-    ageGroup: ["Өсвөр насанд", "Насанд хүрэгчдэд"],
+    ageGroup: ["12+ тохиромжтой"],
     steps: ["Тахиа чанана.", "Ногоотой холино.", "Соус нэмнэ."],
     isFavorite: false,
   },
 ];
+// ----- HELPERS -----
 
+// ID-аар 1 recipe авах
 export const getRecipeById = (id) =>
   recipes.find((recipe) => recipe.id === id);
 
+
+// Favorite recipe-ууд авах
 export const getFavoriteRecipes = () =>
   recipes.filter((recipe) => recipe.isFavorite);
 
+
+// Хайлт хийх
 export const searchRecipes = (query) => {
   const q = (query || "").toLowerCase().trim();
+
   if (!q) return recipes;
+
   return recipes.filter(
     (recipe) =>
       recipe.title.toLowerCase().includes(q) ||
       recipe.description.toLowerCase().includes(q) ||
-      recipe.cuisine.toLowerCase().includes(q) ||
-      recipe.ingredients.some((i) => i.toLowerCase().includes(q))
+      recipe.ingredients.some((i) =>
+        i.toLowerCase().includes(q)
+      )
   );
 };
 
-export default { recipes, getRecipeById, getFavoriteRecipes, searchRecipes };
+
+// Default export (optional)
+export default {
+  recipes,
+  getRecipeById,
+  getFavoriteRecipes,
+  searchRecipes,
+};

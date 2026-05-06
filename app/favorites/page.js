@@ -3,6 +3,7 @@ import "../../legacy/css/favorite.css";
 
 export default function FavoritesPage() {
   const favorites = getFavoriteRecipes();
+  console.log("favorites", favorites);
 
   return (
     <main className="main-content">
