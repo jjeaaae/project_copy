@@ -101,7 +101,7 @@ function initHomePage() {
 // ===== Алхам 1 (Pills)
 const moods = [
   "Ядарсан", "Гунигтай", "Тайван",
-  "Сайхан", "Даарч байна", "Халуутай"
+  "Сайхан", "Даарч байна", "Халууцаж байна", "Залхуу", "Эрч хүчтэй"
 ];
 
 function createPills() {
@@ -129,7 +129,15 @@ const cravings = [
   { name: "Ногоотой", icon: "🥗" },
   { name: "Шөлтэй", icon: "🍜" },
   { name: "Шарсан", icon: "🍗" },
-  { name: "Хөнгөн", icon: "🥪" }
+  { name: "Хөнгөн", icon: "🥪" },
+  { name: "Эрүүл", icon: ""},
+  { name: "Ногоо ихтэй", icon: ""},
+  { name: "Мах ихтэй", icon: ""},
+  { name: "Монгол хоол", icon: ""},
+
+  
+  
+  
 ];
 
 function createCravings() {
