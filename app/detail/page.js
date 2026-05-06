@@ -27,7 +27,8 @@ export default function DetailPage() {
             <h3>Жорын товч мэдээлэл</h3>
             <p><strong>Хугацаа:</strong> {recipe.cookTime}</p>
             <p><strong>Порц:</strong> {recipe.servings}</p>
-            <p><strong>Төвөгшил:</strong> {recipe.difficulty}</p>
+            <p><strong>Төвөгшил:</strong> {recipe.difficulty}/10</p>
+            <p><strong>Улсын төрөл:</strong> {recipe.cuisine}</p>
             <p><strong>Калори:</strong> {recipe.calories}</p>
             <a className="card-button" href="/favorites">Буцах</a>
           </article>
@@ -60,9 +61,13 @@ export default function DetailPage() {
 
             <article className="panel">
               <h3>Насны ангилал</h3>
-              <ul>
-                {recipe.ageGroup.map((item) => <li key={item}>{item}</li>)}
-              </ul>
+              <div style={{ display: "flex", flexWrap: "wrap", gap: 10, marginTop: 8 }}>
+                {recipe.ageGroup.map((item) => (
+                  <span key={item} style={{ padding: "8px 14px", borderRadius: 999, background: "#efe5d7", color: "#5a3e2b", fontWeight: 700, fontSize: "0.9rem" }}>
+                    {item}
+                  </span>
+                ))}
+              </div>
             </article>
           </div>
 

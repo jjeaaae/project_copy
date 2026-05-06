@@ -1,16 +1,19 @@
-// ----- DATA -----
-  export const recipes = [
+// ageGroup enum values:
+// "Бүх насанд тохиромжтой" | "Насанд хүрэгчдэд" | "Өсвөр насанд" | "Хүүхдэд тохиромжтой" | "Бага насны хүүхдэд"
+
+export const recipes = [
   {
     id: "creamy-pasta",
     title: "Цөцгийтэй паста",
     alt: "Цөцгийтэй паста",
     tag: "Хадгалсан",
-    meta: "Оройн хоолны дуртай сонголт",
+    meta: "Оройн хоол",
     description: "Цөцгийтэй соус, мөөг, бяслагтай өтгөн амттай паста.",
     image: "/pancake.png",
+    cuisine: "Итали",
     cookTime: "35 минут",
     servings: "4",
-    difficulty: "Дунд",
+    difficulty: 5,
     calories: "520 ккал",
     nutrition: {
       calories: "520 ккал",
@@ -25,11 +28,7 @@
       "Нэмэлт уургаар масс нэмэх зорилгод тааруулж болно",
       "Дунд зэрэг калоритой гэр бүлийн хоол",
     ],
-    ageGroup: [
-      "12-18: Тохиромжтой",
-      "5-12: Амтлагчийг багасгаж болно",
-      "1-5: Зөөлөн болгож бага порцоор өгөх",
-    ],
+    ageGroup: ["Бүх насанд тохиромжтой", "Өсвөр насанд"],
     steps: [
       "Пастагаа чанана.",
       "Мөөгөө хуурна.",
@@ -38,7 +37,6 @@
     ],
     isFavorite: true,
   },
-
   {
     id: "greek-salad",
     title: "Грек салат",
@@ -47,9 +45,10 @@
     meta: "Шинэхэн эрүүл сонголт",
     description: "Шинэхэн ногоо, фета бяслагтай хөнгөн салат.",
     image: "/pancake.png",
+    cuisine: "Грек",
     cookTime: "15 минут",
     servings: "2",
-    difficulty: "Хялбар",
+    difficulty: 2,
     calories: "240 ккал",
     nutrition: {
       calories: "240 ккал",
@@ -64,11 +63,7 @@
       "Илчлэг багатай хоол хайж байвал сайн сонголт",
       "Зун, хаврын улиралд шинэхэн байдлаар идэхэд тохиромжтой",
     ],
-    ageGroup: [
-      "12-18: Маш тохиромжтой",
-      "5-12: Бяслагийн хэмжээг багасгаж болно",
-      "1-5: Жижиглэж өгөх шаардлагатай",
-    ],
+    ageGroup: ["Бүх насанд тохиромжтой", "Насанд хүрэгчдэд"],
     steps: [
       "Ногоонуудаа угааж жижиглэнэ.",
       "Фета бяслаг, оливаа нэмнэ.",
@@ -77,7 +72,6 @@
     ],
     isFavorite: true,
   },
-
   {
     id: "pancake",
     title: "Панкейк",
@@ -86,9 +80,10 @@
     meta: "Өглөөний хурдан сонголт",
     description: "Зөөлөн бүтэцтэй, өглөөний цайнд тохиромжтой амтлаг панкейк.",
     image: "/pancake.png",
+    cuisine: "Америк",
     cookTime: "25 минут",
     servings: "4",
-    difficulty: "Хялбар",
+    difficulty: 2,
     calories: "380 ккал",
     nutrition: {
       calories: "380 ккал",
@@ -103,11 +98,7 @@
       "Гэр бүлийн өглөөний цайд амархан бэлтгэнэ",
       "Жимс, сироптой хослуулж амт оруулж болно",
     ],
-    ageGroup: [
-      "12-18: Маш тохиромжтой",
-      "5-12: Хүүхдэд дуртай амт",
-      "1-5: Жижиг порцоор өгч болно",
-    ],
+    ageGroup: ["Бүх насанд тохиромжтой", "Хүүхдэд тохиромжтой"],
     steps: [
       "Өндөг, сүүгээ холино.",
       "Гурил, тосоо нэмж зуурмаг бэлтгэнэ.",
@@ -116,8 +107,6 @@
     ],
     isFavorite: true,
   },
-
-  // ШИНЭ 1
   {
     id: "fried-rice",
     title: "Шарсан будаа",
@@ -126,9 +115,10 @@
     meta: "Хурдан өдрийн хоол",
     description: "Ногоо, өндөг, махтай амттай шарсан будаа.",
     image: "/pancake.png",
+    cuisine: "Хятад",
     cookTime: "20 минут",
     servings: "3",
-    difficulty: "Хялбар",
+    difficulty: 2,
     calories: "450 ккал",
     nutrition: {
       calories: "450 ккал",
@@ -145,10 +135,8 @@
       "Ногоо, махаа хуурна.",
       "Будаатай хольж шарна.",
     ],
-    isFavorite: false,
+    isFavorite: true,
   },
-
-  // ШИНЭ 2
   {
     id: "beef-soup",
     title: "Үхрийн махан шөл",
@@ -157,9 +145,10 @@
     meta: "Дулаан хоол",
     description: "Үхрийн мах, ногоотой шимтэй шөл.",
     image: "/pancake.png",
+    cuisine: "Монгол",
     cookTime: "60 минут",
     servings: "4",
-    difficulty: "Дунд",
+    difficulty: 5,
     calories: "300 ккал",
     nutrition: {
       calories: "300 ккал",
@@ -170,12 +159,10 @@
     },
     ingredients: ["Мах", "Лууван", "Төмс"],
     lifestyle: ["Дархлаа дэмжинэ", "Өвлийн улиралд тохиромжтой"],
-    ageGroup: ["Бүх насанд"],
+    ageGroup: ["Бүх насанд тохиромжтой"],
     steps: ["Махаа чанана.", "Ногоо нэмнэ.", "Амтална."],
     isFavorite: false,
   },
-
-  // ШИНЭ 3
   {
     id: "chicken-salad",
     title: "Тахианы салат",
@@ -184,9 +171,10 @@
     meta: "Хөнгөн оройн хоол",
     description: "Тахианы мах, ногоотой уураг ихтэй салат.",
     image: "/pancake.png",
+    cuisine: "Олон улсын",
     cookTime: "25 минут",
     servings: "2",
-    difficulty: "Хялбар",
+    difficulty: 2,
     calories: "280 ккал",
     nutrition: {
       calories: "280 ккал",
@@ -197,44 +185,28 @@
     },
     ingredients: ["Тахиа", "Салат навч", "Өргөст хэмх"],
     lifestyle: ["Жин хасахад тохиромжтой", "Protein өндөр"],
-    ageGroup: ["12+ тохиромжтой"],
+    ageGroup: ["Өсвөр насанд", "Насанд хүрэгчдэд"],
     steps: ["Тахиа чанана.", "Ногоотой холино.", "Соус нэмнэ."],
     isFavorite: false,
   },
 ];
-// ----- HELPERS -----
 
-// ID-аар 1 recipe авах
 export const getRecipeById = (id) =>
   recipes.find((recipe) => recipe.id === id);
 
-
-// Favorite recipe-ууд авах
 export const getFavoriteRecipes = () =>
   recipes.filter((recipe) => recipe.isFavorite);
 
-
-// Хайлт хийх
 export const searchRecipes = (query) => {
   const q = (query || "").toLowerCase().trim();
-
   if (!q) return recipes;
-
   return recipes.filter(
     (recipe) =>
       recipe.title.toLowerCase().includes(q) ||
       recipe.description.toLowerCase().includes(q) ||
-      recipe.ingredients.some((i) =>
-        i.toLowerCase().includes(q)
-      )
+      recipe.cuisine.toLowerCase().includes(q) ||
+      recipe.ingredients.some((i) => i.toLowerCase().includes(q))
   );
 };
 
-
-// Default export (optional)
-export default {
-  recipes,
-  getRecipeById,
-  getFavoriteRecipes,
-  searchRecipes,
-};
+export default { recipes, getRecipeById, getFavoriteRecipes, searchRecipes };

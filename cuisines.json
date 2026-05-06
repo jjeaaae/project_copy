@@ -1,0 +1,14 @@
+[
+  { "id": "italian",       "label": "Итали" },
+  { "id": "greek",         "label": "Грек" },
+  { "id": "american",      "label": "Америк" },
+  { "id": "chinese",       "label": "Хятад" },
+  { "id": "mongolian",     "label": "Монгол" },
+  { "id": "international", "label": "Олон улсын" },
+  { "id": "japanese",      "label": "Япон" },
+  { "id": "korean",        "label": "Солонгос" },
+  { "id": "indian",        "label": "Энэтхэг" },
+  { "id": "french",        "label": "Франц" },
+  { "id": "mexican",       "label": "Мексик" },
+  { "id": "turkish",       "label": "Турк" }
+]
