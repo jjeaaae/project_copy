@@ -1,4 +1,4 @@
-import { getRecipeById } from "@../../../../data";
+import { getRecipeById } from "@../../../data";
 
 export async function GET(request, { params }) {
   const recipe = getRecipeById(params.id);
