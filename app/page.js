@@ -1,8 +1,28 @@
 "use client";
-import { useState } from "react";
+
+import { useEffect, useState } from "react";
 import "../legacy/css/index.css";
 
 export default function HomePage() {
+
+  // ===== API DATA =====
+  const [recipes, setRecipes] = useState([]);
+
+  useEffect(() => {
+
+    async function fetchRecipes() {
+
+      const response = await fetch("/api/recipes");
+
+      const data = await response.json();
+
+      setRecipes(data);
+    }
+
+    fetchRecipes();
+
+  }, []);
+
   // ===== DATA =====
   const moodsList = [
     "Ядарсан", "Гунигтай", "Тайван",
@@ -26,9 +46,11 @@ export default function HomePage() {
   // ===== STATE =====
   const [selectedMoods, setSelectedMoods] = useState([]);
   const [selectedCravings, setSelectedCravings] = useState([]);
+
   const [w1, setW1] = useState("");
   const [w2, setW2] = useState("");
   const [w3, setW3] = useState("");
+
   const [showResult, setShowResult] = useState(false);
 
   // ===== TOGGLE FUNCTIONS =====
@@ -58,9 +80,11 @@ export default function HomePage() {
       {/* HERO */}
       <section className="hero">
         <div className="hero-label">ӨДРИЙН СОНГОЛТ</div>
+
         <h1>
           Өнөөдөр <em>юу идэх вэ?</em>
         </h1>
+
         <p className="hero-sub">
           Таны хүсэл болон биеийн байдалд тохирсон жорыг олж өгнө.
         </p>
@@ -70,10 +94,17 @@ export default function HomePage() {
 
         {/* STEP 1 */}
         <div className="section-label">Алхам 1</div>
+
         <div className="step-card">
           <div className="step-num">01</div>
-          <div className="step-title">Таны биеийн байдал</div>
-          <div className="step-desc">Та яг одоо яаж байна вэ?</div>
+
+          <div className="step-title">
+            Таны биеийн байдал
+          </div>
+
+          <div className="step-desc">
+            Та яг одоо яаж байна вэ?
+          </div>
 
           <div className="pills">
             {moodsList.map((m, i) => (
@@ -90,10 +121,17 @@ export default function HomePage() {
 
         {/* STEP 2 */}
         <div className="section-label">Алхам 2</div>
+
         <div className="step-card">
           <div className="step-num">02</div>
-          <div className="step-title">Юу идмээр байна?</div>
-          <div className="step-desc">Хоолны төрлөө сонгоно уу</div>
+
+          <div className="step-title">
+            Юу идмээр байна?
+          </div>
+
+          <div className="step-desc">
+            Хоолны төрлөө сонгоно уу
+          </div>
 
           <div className="craving-grid">
             {cravingsList.map((c, i) => (
@@ -103,7 +141,10 @@ export default function HomePage() {
                 onClick={() => toggleCraving(c.name)}
               >
                 <div className="c-icon">{c.icon}</div>
-                <div className="c-label">{c.name}</div>
+
+                <div className="c-label">
+                  {c.name}
+                </div>
               </div>
             ))}
           </div>
@@ -111,32 +152,56 @@ export default function HomePage() {
 
         {/* STEP 3 */}
         <div className="section-label">Алхам 3</div>
+
         <div className="step-card">
           <div className="step-num">03</div>
-          <div className="step-title">Нэмэлт үгс</div>
-          <div className="step-desc">Та хүсвэл түлхүүр үг оруулж болно</div>
+
+          <div className="step-title">
+            Нэмэлт үгс
+          </div>
+
+          <div className="step-desc">
+            Та хүсвэл түлхүүр үг оруулж болно
+          </div>
 
           <div className="word-row">
+
             <div className="word-box">
               <span>Үг 1</span>
-              <input value={w1} onChange={(e) => setW1(e.target.value)} />
+
+              <input
+                value={w1}
+                onChange={(e) => setW1(e.target.value)}
+              />
             </div>
 
             <div className="word-box">
               <span>Үг 2</span>
-              <input value={w2} onChange={(e) => setW2(e.target.value)} />
+
+              <input
+                value={w2}
+                onChange={(e) => setW2(e.target.value)}
+              />
             </div>
 
             <div className="word-box">
               <span>Үг 3</span>
-              <input value={w3} onChange={(e) => setW3(e.target.value)} />
+
+              <input
+                value={w3}
+                onChange={(e) => setW3(e.target.value)}
+              />
             </div>
+
           </div>
         </div>
 
         {/* CTA */}
         <div className="cta-area">
-          <button className="cta-btn" onClick={recommend}>
+          <button
+            className="cta-btn"
+            onClick={recommend}
+          >
             Жор санал болгох →
           </button>
         </div>
@@ -144,9 +209,13 @@ export default function HomePage() {
         {/* RESULT */}
         {showResult && (
           <div className="result-section">
-            <div className="result-label">Таны сонголт</div>
+
+            <div className="result-label">
+              Таны сонголт
+            </div>
 
             <div className="result-grid">
+
               <div className="result-card">
                 <h3>Сонгосон Mood</h3>
                 <p>{selectedMoods.join(", ")}</p>
@@ -161,9 +230,37 @@ export default function HomePage() {
                 <h3>Үгс</h3>
                 <p>{w1}, {w2}, {w3}</p>
               </div>
+
             </div>
           </div>
         )}
+
+        {/* API TEST */}
+        <div style={{ marginTop: "50px" }}>
+
+          <h2>API-аас ирсэн Recipes</h2>
+
+          {recipes.map((recipe) => (
+            <div
+              key={recipe.id}
+              style={{
+                padding: "10px",
+                marginBottom: "10px",
+                border: "1px solid #ddd",
+                borderRadius: "10px"
+              }}
+            >
+              <h3>{recipe.title}</h3>
+
+              <p>{recipe.description}</p>
+
+              <small>
+                {recipe.cuisine}
+              </small>
+            </div>
+          ))}
+
+        </div>
 
       </main>
     </>
