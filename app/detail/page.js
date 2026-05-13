@@ -1,14 +1,31 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-import { getRecipeById } from "../../data.js";
+import { useEffect, useState } from "react";
 import "../../legacy/css/detail.css";
 
 export default function DetailPage() {
   const params = useSearchParams();
-  const recipe = getRecipeById(params.get("id"));
+  const [recipe, setRecipe] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
 
-  if (!recipe) return <p>Жор олдсонгүй</p>;
+  useEffect(() => {
+    const id = params.get("id");
+    if (!id) { setError("Жорын ID олдсонгүй"); setLoading(false); return; }
+
+    fetch(`/api/recipes/${id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.message) setError(data.message);
+        else setRecipe(data);
+      })
+      .catch(() => setError("Өгөгдөл татахад алдаа гарлаа"))
+      .finally(() => setLoading(false));
+  }, [params]);
+
+  if (loading) return <p style={{ padding: 40 }}>Уншиж байна...</p>;
+  if (error)   return <p style={{ padding: 40 }}>{error}</p>;
 
   return (
     <main className="main-content">
@@ -28,9 +45,9 @@ export default function DetailPage() {
             <p><strong>Хугацаа:</strong> {recipe.cookTime}</p>
             <p><strong>Порц:</strong> {recipe.servings}</p>
             <p><strong>Төвөгшил:</strong> {recipe.difficulty}/10</p>
-            <p><strong>Улсын төрөл:</strong> {recipe.cuisine}</p>
+            <p><strong>Хоолны гарал үүсэл:</strong> {recipe.cuisine}</p>
             <p><strong>Калори:</strong> {recipe.calories}</p>
-            <a className="card-button" href="/favorites">Буцах</a>
+            <a className="card-button" href="/search">Буцах</a>
           </article>
 
           <div className="info-grid">
