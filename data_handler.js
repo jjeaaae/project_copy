@@ -2,6 +2,17 @@
 
 import { recipes, getRecipeById, getFavoriteRecipes } from "./data.js";
 
+
+import { showFavorites } from "./pages/favorites.js";
+import { showDetail } from "./pages/detail.js";
+import { initHomePage } from "./pages/home.js";
+
+document.addEventListener("DOMContentLoaded", () => {
+  showFavorites();
+  showDetail();
+  initHomePage();
+});
+
 document.addEventListener("DOMContentLoaded", () => {
   showFavorites();
   showDetail();

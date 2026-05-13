@@ -121,7 +121,7 @@ export const recipes = [
     image: "/fried_rice.webp",
     cookTime: "20 минут",
     servings: "3",
-    difficulty: "Хялбар",
+    difficulty: "4",
     calories: "450 ккал",
     nutrition: {
       calories: "450 ккал",
@@ -152,7 +152,7 @@ export const recipes = [
     image: "/beef_soup.png",
     cookTime: "60 минут",
     servings: "4",
-    difficulty: "Дунд",
+    difficulty: "5",
     calories: "300 ккал",
     nutrition: {
       calories: "300 ккал",
@@ -179,7 +179,7 @@ export const recipes = [
     image: "/chicken_salad.jpg",
     cookTime: "25 минут",
     servings: "2",
-    difficulty: "Хялбар",
+    difficulty: "4",
     calories: "280 ккал",
     nutrition: {
       calories: "280 ккал",
@@ -204,7 +204,7 @@ export const recipes = [
   image: "/vegetable_soup.jpg",
   cookTime: "30 минут",
   servings: "3",
-  difficulty: "Хялбар",
+  difficulty: "5",
   calories: "180 ккал",
   nutrition: {
     calories: "180 ккал",
@@ -230,7 +230,7 @@ export const recipes = [
   image: "/бууз.webp",
   cookTime: "1 цаг",
   servings: "5",
-  difficulty: "Дунд",
+  difficulty: "7",
   calories: "420 ккал",
   nutrition: {
     calories: "420 ккал",
@@ -256,7 +256,7 @@ export const recipes = [
   image: "/huushuur.jpg",
   cookTime: "40 минут",
   servings: "4",
-  difficulty: "Дунд",
+  difficulty: "8",
   calories: "500 ккал",
   nutrition: {
     calories: "500 ккал",
@@ -282,7 +282,7 @@ export const recipes = [
   image: "/tsuivan.jpg",
   cookTime: "45 минут",
   servings: "4",
-  difficulty: "Дунд",
+  difficulty: "6",
   calories: "430 ккал",
   nutrition: {
     calories: "430 ккал",
@@ -308,7 +308,7 @@ export const recipes = [
   image: "/horhog.webp",
   cookTime: "2 цаг",
   servings: "6",
-  difficulty: "Хэцүү",
+  difficulty: "9",
   calories: "650 ккал",
   nutrition: {
     calories: "650 ккал",
@@ -334,7 +334,7 @@ export const recipes = [
   image: "/pizza.avif",
   cookTime: "35 минут",
   servings: "4",
-  difficulty: "Дунд",
+  difficulty: "6",
   calories: "700 ккал",
   nutrition: {
     calories: "700 ккал",
@@ -360,7 +360,7 @@ export const recipes = [
   image: "/banshtai_shol.webp",
   cookTime: "50 минут",
   servings: "4",
-  difficulty: "Дунд",
+  difficulty: "5",
   calories: "350 ккал",
   nutrition: {
     calories: "350 ккал",
@@ -386,7 +386,7 @@ export const recipes = [
   image: "/cake.webp",
   cookTime: "1 цаг 20 минут",
   servings: "6",
-  difficulty: "Дунд",
+  difficulty: "8",
   calories: "520 ккал",
   nutrition: {
     calories: "520 ккал",
@@ -412,7 +412,7 @@ export const recipes = [
   image: "/zraz.jpg",
   cookTime: "45 минут",
   servings: "3",
-  difficulty: "Дунд",
+  difficulty: "7",
   calories: "480 ккал",
   nutrition: {
     calories: "480 ккал",
