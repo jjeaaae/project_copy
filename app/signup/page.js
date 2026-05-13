@@ -1,54 +1,142 @@
-import "../../legacy/css/signup.css"
+"use client";
 
-export default function SingUpPage() {
-    return (
-        <>
-            <div id="site-header-mount"></div>
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { authApi } from "../lib/api";
+import "../../legacy/css/signup.css";
 
-            <main className="main-content">
-                <section className="auth-section">
-                    <div className="container auth-layout">
-                        <div className="auth-copy">
-                            <p className="eyebrow">Бүртгэл</p>
-                            <h2 id="auth-page-title"></h2>
-                            <p id="auth-page-copy"></p>
-                            <div className="info-card">
-                                <h3 id="auth-info-title"></h3>
-                                <ul id="auth-info-list"></ul>
-                            </div>
-                        </div>
+export default function SignUpPage() {
+  const router = useRouter();
+  const [form, setForm] = useState({ firstName: "", lastName: "", email: "", password: "", confirm: "" });
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
-                        <form className="auth-form">
-                            <h3 id="auth-form-title"></h3>
+  function handleChange(e) {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  }
 
-                            <label>
-                                <span>И-мэйл</span>
-                                <input type="email" placeholder="name@example.com"/>
-                            </label>
+  async function handleSubmit(e) {
+    e.preventDefault();
+    setError("");
 
-                            <label>
-                                <span>Нууц үг</span>
-                                <input type="password" placeholder="Нууц үгээ оруулна уу"/>
-                            </label>
+    if (form.password !== form.confirm) {
+      setError("Нууц үг таарахгүй байна");
+      return;
+    }
 
-                            <div className="row">
-                                <label className="check-row">
-                                    <input type="checkbox"/>
-                                        <span>Намайг сана</span>
-                                </label>
-                                <a className="text-link" href="#">Нууц үг мартсан?</a>
-                            </div>
+    setLoading(true);
+    try {
+      const data = await authApi.register({
+        firstName: form.firstName,
+        lastName: form.lastName,
+        email: form.email,
+        password: form.password,
+      });
+      localStorage.setItem("token", data.token);
+      localStorage.setItem("user", JSON.stringify(data.user));
+      router.push("/");
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  }
 
-                            <button type="submit" className="primary-button" id="auth-submit-button"></button>
+  return (
+    <main className="main-content">
+      <section className="auth-section">
+        <div className="container auth-layout">
+          <div className="auth-copy">
+            <p className="eyebrow">Бүртгэл</p>
+            <h2>Нэгдээрэй</h2>
+            <p>RecipeHub-д бүртгүүлж хоолны жорын ертөнцийг нээ.</p>
+            <div className="info-card">
+              <h3>Бүртгүүлснээр</h3>
+              <ul>
+                <li>Жор хадгалах боломжтой</li>
+                <li>Үнэлгээ, сэтгэгдэл үлдээх</li>
+                <li>Subscription авч жор нэмэх</li>
+              </ul>
+            </div>
+          </div>
 
-                            <div className="signup-cta">
-                                <p className="switch-text" id="auth-switch-text"></p>
-                                <a className="secondary-button" id="auth-switch-link" href="/login"></a>
-                            </div>
-                        </form>
-                    </div>
-                </section>
-            </main>
-        </>
-    );
+          <form className="auth-form" onSubmit={handleSubmit}>
+            <h3>Бүртгүүлэх</h3>
+
+            {error && (
+              <p style={{ color: "red", marginBottom: 12, fontSize: "0.9rem" }}>{error}</p>
+            )}
+
+            <label>
+              <span>Нэр</span>
+              <input
+                type="text"
+                name="firstName"
+                placeholder="Нэрээ оруулна уу"
+                value={form.firstName}
+                onChange={handleChange}
+                required
+              />
+            </label>
+
+            <label>
+              <span>Овог</span>
+              <input
+                type="text"
+                name="lastName"
+                placeholder="Овгоо оруулна уу"
+                value={form.lastName}
+                onChange={handleChange}
+              />
+            </label>
+
+            <label>
+              <span>И-мэйл</span>
+              <input
+                type="email"
+                name="email"
+                placeholder="name@example.com"
+                value={form.email}
+                onChange={handleChange}
+                required
+              />
+            </label>
+
+            <label>
+              <span>Нууц үг</span>
+              <input
+                type="password"
+                name="password"
+                placeholder="Нууц үгээ оруулна уу"
+                value={form.password}
+                onChange={handleChange}
+                required
+              />
+            </label>
+
+            <label>
+              <span>Нууц үг давтах</span>
+              <input
+                type="password"
+                name="confirm"
+                placeholder="Нууц үгээ дахин оруулна уу"
+                value={form.confirm}
+                onChange={handleChange}
+                required
+              />
+            </label>
+
+            <button type="submit" className="primary-button" disabled={loading}>
+              {loading ? "Бүртгэж байна..." : "Бүртгүүлэх"}
+            </button>
+
+            <div className="signup-cta">
+              <p className="switch-text">Бүртгэлтэй юу?</p>
+              <a className="secondary-button" href="/login">Нэвтрэх</a>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+  );
 }

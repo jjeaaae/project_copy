@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 const navItems = [
   { href: "/search", label: "Хайх" },
@@ -9,7 +10,6 @@ const navItems = [
   { href: "/pricing", label: "Subscription" },
   { href: "/add", label: "Жор нэмэх" },
   { href: "/admin", label: "Админ" },
-  { href: "/login", label: "Нэвтрэх" },
 ];
 
 const activePageMap = {
@@ -18,7 +18,21 @@ const activePageMap = {
 
 export default function Navbar() {
   const pathname = usePathname();
+  const router = useRouter();
   const activePage = activePageMap[pathname] || pathname;
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const stored = localStorage.getItem("user");
+    if (stored) setUser(JSON.parse(stored));
+  }, [pathname]);
+
+  function handleLogout() {
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    setUser(null);
+    router.push("/login");
+  }
 
   return (
     <header className="site-header">
@@ -29,14 +43,28 @@ export default function Navbar() {
         </Link>
         <nav className="site-nav" aria-label="Үндсэн цэс">
           {navItems.map(({ href, label }) => (
-            <Link
-              key={href}
-              href={href}
-              className={activePage === href ? "active" : ""}
-            >
+            <Link key={href} href={href} className={activePage === href ? "active" : ""}>
               {label}
             </Link>
           ))}
+
+          {user ? (
+            <>
+              <span style={{ fontWeight: 600, padding: "0 8px" }}>
+                {user.firstName}
+              </span>
+              <button
+                onClick={handleLogout}
+                style={{ background: "none", border: "none", cursor: "pointer", fontWeight: 600 }}
+              >
+                Гарах
+              </button>
+            </>
+          ) : (
+            <Link href="/login" className={activePage === "/login" ? "active" : ""}>
+              Нэвтрэх
+            </Link>
+          )}
         </nav>
       </div>
     </header>
