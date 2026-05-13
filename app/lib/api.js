@@ -1,9 +1,7 @@
-const BASE_URL = "http://localhost:5001/api";
-
-export async function apiFetch(path, options = {}) {
+async function apiFetch(path, options = {}) {
   const token = typeof window !== "undefined" ? localStorage.getItem("token") : null;
 
-  const res = await fetch(`${BASE_URL}${path}`, {
+  const res = await fetch(path, {
     headers: {
       "Content-Type": "application/json",
       ...(token ? { Authorization: `Bearer ${token}` } : {}),
@@ -18,7 +16,23 @@ export async function apiFetch(path, options = {}) {
 }
 
 export const authApi = {
-  register: (body) => apiFetch("/auth/register", { method: "POST", body: JSON.stringify(body) }),
-  login: (body) => apiFetch("/auth/login", { method: "POST", body: JSON.stringify(body) }),
-  me: () => apiFetch("/auth/me"),
+  register: (body) => apiFetch("/api/auth/register", { method: "POST", body: JSON.stringify(body) }),
+  login: (body) => apiFetch("/api/auth/login", { method: "POST", body: JSON.stringify(body) }),
+  me: () => apiFetch("/api/auth/me"),
+};
+
+export const recipesApi = {
+  getAll: (params = {}) => {
+    const qs = new URLSearchParams(params).toString();
+    return apiFetch(`/api/recipes${qs ? `?${qs}` : ""}`);
+  },
+  getById: (id) => apiFetch(`/api/recipes/${id}`),
+  search: (params = {}) => {
+    const qs = new URLSearchParams(params).toString();
+    return apiFetch(`/api/search${qs ? `?${qs}` : ""}`);
+  },
+  getFavorites: () => apiFetch("/api/favorites"),
+  getByCuisine: (name) => apiFetch(`/api/cuisine/${encodeURIComponent(name)}`),
+  getByAgeGroup: (group) => apiFetch(`/api/personalized/${encodeURIComponent(group)}`),
+  add: (body) => apiFetch("/api/add", { method: "POST", body: JSON.stringify(body) }),
 };

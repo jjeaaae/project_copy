@@ -2,17 +2,11 @@ const BACKEND = process.env.BACKEND_URL;
 
 export async function POST(request) {
   const body = await request.json();
-  const token = request.headers.get("authorization") || "";
-
-  const res = await fetch(`${BACKEND}/recipes`, {
+  const res = await fetch(`${BACKEND}/auth/login`, {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      ...(token ? { Authorization: token } : {}),
-    },
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify(body),
   });
-
   const data = await res.json();
   return Response.json(data, { status: res.status });
 }

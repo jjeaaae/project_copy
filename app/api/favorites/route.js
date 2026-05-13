@@ -1,5 +1,7 @@
-import { getFavoriteRecipes } from "@../../../data";
+const BACKEND = process.env.BACKEND_URL;
 
 export async function GET() {
-  return Response.json(getFavoriteRecipes());
+  const res = await fetch(`${BACKEND}/recipes?isFavorite=true`);
+  const data = await res.json();
+  return Response.json(data, { status: res.status });
 }

@@ -1,14 +1,7 @@
-import { getRecipeById } from "@../../../data";
+const BACKEND = process.env.BACKEND_URL;
 
 export async function GET(request, { params }) {
-  const recipe = getRecipeById(params.id);
-
-  if (!recipe) {
-    return Response.json(
-      { message: "Recipe not found" },
-      { status: 404 }
-    );
-  }
-
-  return Response.json(recipe);
+  const res = await fetch(`${BACKEND}/recipes/${params.id}`);
+  const data = await res.json();
+  return Response.json(data, { status: res.status });
 }
