@@ -21,6 +21,12 @@ export const authApi = {
   me: () => apiFetch("/api/auth/me"),
 };
 
+export const favoritesApi = {
+  getAll: () => apiFetch("/api/users/favorites"),
+  add: (slug) => apiFetch(`/api/users/favorites/${slug}`, { method: "POST" }),
+  remove: (slug) => apiFetch(`/api/users/favorites/${slug}`, { method: "DELETE" }),
+};
+
 export const recipesApi = {
   getAll: (params = {}) => {
     const qs = new URLSearchParams(params).toString();
