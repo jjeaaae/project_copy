@@ -32,19 +32,24 @@ export default function HomePage() {
   const moodsList = [
     "Ядарсан", "Гунигтай", "Тайван",
     "Сайхан", "Даарч байна", "Халууцаж байна",
-    "Идэвхтэй", "Залхуу", "Сандарсан", "Эрч хүчтэй"
+    "Эрч хүчтэй", "Залхуу", "Сандарсан", 
   ];
 
   const cravingsList = [
     { name: "Чихэрлэг", icon: "🍰" },
-    { name: "Халуун", icon: "🔥" },
+    { name: "Халуун ногоотой", icon: "🔥" },
     { name: "Ногоотой", icon: "🥗" },
     { name: "Шөлтэй", icon: "🍜" },
     { name: "Шарсан", icon: "🍗" },
-    { name: "Хөнгөн", icon: "🥪" },
+    { name: "Гадаад хоол", icon: "🥪" },
     { name: "Эрүүл", icon: "🥦" },
     { name: "Мах ихтэй", icon: "🥩" },
     { name: "Монгол хоол", icon: "🍲" },
+    { name: "Өглөөний хоол", icon: "🍝" },
+    { name: "Хурдан хийх хоол", icon: "💨" },
+    { name: "Далайн хоол", icon: "🍲" },
+    { name: "Түргэн хоол", icon: "🍔" },
+    { name: "Бяслаг орсон", icon: "🧀" },
   ];
 
   const toggleMood = (mood) => {
@@ -75,6 +80,9 @@ export default function HomePage() {
       ...(recipe.ingredients || []),
       ...(recipe.lifestyle || []),
       ...(recipe.ageGroup || []),
+      ...(recipe.moods  || []),
+      ...(recipe.cravings || []),
+
     ]
       .join(" ")
       .toLowerCase();
@@ -99,13 +107,12 @@ export default function HomePage() {
 
     const filtered = recipes.filter((recipe) => {
       const moodMatch = selectedMoods.some((mood) =>
-        textIncludes(recipe, mood)
+      recipe.moods?.includes(mood)
       );
 
       const cravingMatch = selectedCravings.some((craving) =>
-        textIncludes(recipe, craving)
+        recipe.cravings?.includes(craving)
       );
-
       const wordMatch = words.some((word) =>
         textIncludes(recipe, word)
       );
@@ -243,7 +250,7 @@ export default function HomePage() {
 
                       <a
                         className="card-button"
-                        href={`/detail?slug=${recipe.slug}`}
+                        href={`/detail?id=${recipe.slug}`}
                       >
                         Жор үзэх
                       </a>
