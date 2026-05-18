@@ -3,6 +3,17 @@
 
 export const recipes = [
   {
+  id: "tsuivan",
+  title: "Цуйван",
+  image: "/images/tsuivan.jpg",
+
+  moods: ["Ядарсан", "Эрч хүчтэй"],
+
+  cravings: ["Мах ихтэй", "Монгол хоол"]
+},
+
+
+  {
     id: "creamy-pasta",
     title: "Цөцгийтэй паста",
     alt: "Цөцгийтэй паста",
@@ -72,6 +83,8 @@ export const recipes = [
       "Хүйтнээр нь шууд сервистэй болгоно.",
     ],
     isFavorite: true,
+    moods: ["Идэвхтэй", "Сайхан", "Тайван"],
+    cravings: ["Ногоотой", "Хөнгөн", "Эрүүл"],
   },
 
   {
@@ -290,7 +303,9 @@ export const recipes = [
     carbs: "45г",
     fat: "15г",
     type: "Гоймон хоол",
+    
   },
+  
   ingredients: ["Гурил", "Мах", "Лууван"],
   lifestyle: ["Traditional food"],
   ageGroup: ["8+ тохиромжтой"],
@@ -464,3 +479,27 @@ export default {
   getFavoriteRecipes,
   searchRecipes,
 };
+
+
+// ===== HOME PAGE DATA =====
+
+export const moods = [
+  "Ядарсан", "Гунигтай", "Тайван",
+  "Сайхан", "Даарч байна", "Халууцаж байна",
+  "Идэвхтэй", "Залхуу", "Сандарсан", "Эрч хүчтэй"
+];
+
+export const cravings = [
+  { name: "Чихэрлэг", icon: "🍰" },
+  { name: "Халуун",   icon: "🔥" },
+  { name: "Ногоотой", icon: "🥗" },
+  { name: "Шөлтэй",  icon: "🍜" },
+  { name: "Шарсан",  icon: "🍗" },
+  { name: "Хөнгөн",  icon: "🥪" },
+  { name: "Эрүүл",       icon: "" },
+  { name: "Ногоо ихтэй", icon: "" },
+  { name: "Мах ихтэй",   icon: "" },
+  { name: "Монгол хоол", icon: "" },
+  { name: "Эслэгээр баялаг", icon: "" },
+];
+

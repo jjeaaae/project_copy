@@ -1,11 +1,15 @@
 // RecipeHub — Data handler
 
-import { recipes, getRecipeById, getFavoriteRecipes } from "./data.js";
+import { recipes, getRecipeById, getFavoriteRecipes, moods, cravings } from "./data.js";
 
 
 import { showFavorites } from "./pages/favorites.js";
 import { showDetail } from "./pages/detail.js";
-import { initHomePage } from "./pages/home.js";
+import { initHomePage } from "./legacy/pages.js/home.js";
+
+
+document.getElementById("index-result-label").innerText =
+  "Танд тохирох жорууд";
 
 document.addEventListener("DOMContentLoaded", () => {
   showFavorites();
@@ -110,10 +114,7 @@ function initHomePage() {
 
 
 // ===== Алхам 1 (Pills)
-const moods = [
-  "Ядарсан", "Гунигтай", "Тайван",
-  "Сайхан", "Даарч байна", "Халууцаж байна", "Идэвхтэй", "Залхуу", "Сандарсан", "Эрч хүчтэй" 
-];
+
 
 function createPills() {
   const container = document.getElementById("moods");
@@ -177,15 +178,87 @@ function getSelected(selector) {
 
 
 // ===== RECOMMEND BUTTON
-window.recommend = function () {
+window.recommend = async function () {
+
   const moods = getSelected("#moods .sel");
   const cravings = getSelected("#cravings .sel");
 
-  console.log(moods, cravings);
+  // input words
+  const words = [
+    document.getElementById("w1")?.value || "",
+    document.getElementById("w2")?.value || "",
+    document.getElementById("w3")?.value || "",
+  ];
 
-  alert("Сонгосон:\n" + moods.join(", ") + "\n" + cravings.join(", "));
+  // API CALL
+  const response = await fetch("/recommend", {
+    method: "POST",
+
+    headers: {
+      "Content-Type": "application/json",
+    },
+
+    body: JSON.stringify({
+      moods,
+      cravings,
+      words,
+    }),
+  });
+
+  const data = await response.json();
+
+  renderResults(data);
 };
+function renderResults(recipes) {
 
+  const resultSection = document.getElementById("results");
+  const grid = document.getElementById("rgrid");
 
-// export
-export { showFavorites, showDetail };
+  if (!grid) return;
+
+  resultSection.style.display = "block";
+
+  if (recipes.length === 0) {
+
+    grid.innerHTML = `
+      <p>Тохирох жор олдсонгүй.</p>
+    `;
+
+    return;
+  }
+
+  grid.innerHTML = recipes.map(recipe => `
+
+    <article class="recipe-card">
+
+      <img
+        class="card-image"
+        src="${recipe.image}"
+        alt="${recipe.alt}"
+      >
+
+      <div class="card-body">
+
+        <p class="card-tag">
+          ${recipe.tag || ""}
+        </p>
+
+        <h3>${recipe.title}</h3>
+
+        <p class="card-meta">
+          ${recipe.description || ""}
+        </p>
+
+        <a
+          class="card-button"
+          href="detail.html?id=${recipe.id}"
+        >
+          Жор үзэх
+        </a>
+
+      </div>
+
+    </article>
+
+  `).join("");
+}
