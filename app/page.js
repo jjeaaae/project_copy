@@ -82,6 +82,7 @@ export default function HomePage() {
       ...(recipe.ageGroup || []),
       ...(recipe.moods  || []),
       ...(recipe.cravings || []),
+      ...(recipe.keywords || [])
 
     ]
       .join(" ")
