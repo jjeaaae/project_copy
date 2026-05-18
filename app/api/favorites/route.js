@@ -1,7 +1,4 @@
-const BACKEND = process.env.BACKEND_URL;
-
+// Replaced by /api/users/favorites — favorites are now per-user
 export async function GET() {
-  const res = await fetch(`${BACKEND}/recipes?isFavorite=true`);
-  const data = await res.json();
-  return Response.json(data, { status: res.status });
+  return Response.json({ message: "Use /api/users/favorites instead" }, { status: 410 });
 }

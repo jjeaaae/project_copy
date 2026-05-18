@@ -9,7 +9,6 @@ const navItems = [
   { href: "/favorites", label: "Хадгалсан" },
   { href: "/pricing", label: "Subscription" },
   { href: "/add", label: "Жор нэмэх" },
-  { href: "/admin", label: "Админ" },
 ];
 
 const activePageMap = {
@@ -39,7 +38,7 @@ export default function Navbar() {
       <div className="container header-inner">
         <Link className="brand-link" href="/" aria-label="RecipeHub нүүр хуудас">
           <span className="eyebrow">Жорын апп</span>
-          <span className="logo">RecipeHub</span>
+          <span className="logo">RecipeHub v0.1</span>
         </Link>
         <nav className="site-nav" aria-label="Үндсэн цэс">
           {navItems.map(({ href, label }) => (
@@ -47,6 +46,12 @@ export default function Navbar() {
               {label}
             </Link>
           ))}
+
+          {user?.role === "admin" && (
+            <Link href="/admin" className={activePage === "/admin" ? "active" : ""}>
+              Админ
+            </Link>
+          )}
 
           {user ? (
             <>
