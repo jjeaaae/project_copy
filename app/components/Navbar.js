@@ -5,10 +5,12 @@ import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 const navItems = [
+   { href: "/", label: "Нүүр хуудас" },
   { href: "/search", label: "Хайх" },
   { href: "/favorites", label: "Хадгалсан" },
   { href: "/pricing", label: "Subscription" },
   { href: "/add", label: "Жор нэмэх" },
+ 
 ];
 
 const activePageMap = {
