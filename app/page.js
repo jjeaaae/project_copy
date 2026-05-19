@@ -68,28 +68,30 @@ export default function HomePage() {
     );
   };
 
-  const textIncludes = (recipe, word) => {
-    const allText = [
-      recipe.title,
-      recipe.description,
-      recipe.meta,
-      recipe.tag,
-      recipe.cuisine,
-      recipe.calories,
-      recipe.cookTime,
-      ...(recipe.ingredients || []),
-      ...(recipe.lifestyle || []),
-      ...(recipe.ageGroup || []),
-      ...(recipe.moods  || []),
-      ...(recipe.cravings || []),
-      ...(recipe.keywords || [])
+ const textIncludes = (recipe, word) => {
+  const lowerWord = word.toLowerCase().trim();
 
-    ]
-      .join(" ")
-      .toLowerCase();
+  const fields = [
+    recipe.title,
+    recipe.description,
+    recipe.meta,
+    recipe.tag,
+    recipe.cuisine,
+    recipe.calories,
+    recipe.cookTime,
+    ...(recipe.ingredients || []),
+    ...(recipe.lifestyle || []),
+    ...(recipe.ageGroup || []),
+    ...(recipe.moods || []),
+    ...(recipe.cravings || []),
+    ...(recipe.scenes || []),
+    ...(recipe.keywords || []),
+  ];
 
-    return allText.includes(word.toLowerCase());
-  };
+  return fields.some((field) =>
+    String(field).toLowerCase().includes(lowerWord)
+  );
+};
 
   const recommend = () => {
     const words = [w1, w2, w3]
@@ -180,15 +182,15 @@ export default function HomePage() {
         <div className="section-label">Алхам 3</div>
         <div className="step-card">
           <div className="step-num">03</div>
-          <div className="step-title">Нэмэлт үгс</div>
-          <div className="step-desc">Та хүсвэл түлхүүр үг оруулж болно</div>
+          <div className="step-title">Та ямар орчинд хооллох гэж байна вэ?</div>
+          <div className="step-desc">Орчноо бичнэ үү</div>
           <div className="opt-badge">Заавал биш</div>
 
           <div className="word-row">
             <div className="word-box">
               <span className="w-num">Үг 1</span>
               <input
-                placeholder="Жишээ: тахиа"
+                placeholder="Жишээ: Бороотой өдөр"
                 value={w1}
                 onChange={(e) => setW1(e.target.value)}
               />
@@ -197,7 +199,7 @@ export default function HomePage() {
             <div className="word-box">
               <span className="w-num">Үг 2</span>
               <input
-                placeholder="Жишээ: шөл"
+                placeholder="Жишээ: Шөнө өлсөх үед"
                 value={w2}
                 onChange={(e) => setW2(e.target.value)}
               />
@@ -206,7 +208,7 @@ export default function HomePage() {
             <div className="word-box">
               <span className="w-num">Үг 3</span>
               <input
-                placeholder="Жишээ: эрүүл"
+                placeholder="Жишээ: Болзоон дээр"
                 value={w3}
                 onChange={(e) => setW3(e.target.value)}
               />
